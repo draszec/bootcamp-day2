@@ -7,7 +7,8 @@ async function handleSubmit(e) {
   e.preventDefault();
   const target = e.target;
   const name = target.querySelector('#name').value;
-  await bootcamp_day2_backend.greet(name).then((response) => {
+  const num = target.querySelector('#num').value;
+  await bootcamp_day2_backend.greet(name, Number(num)).then((response) => {
     greeting.value = response;
   });
 }
@@ -21,6 +22,8 @@ async function handleSubmit(e) {
     <form action="#" @submit="handleSubmit">
       <label for="name">Enter your name: &nbsp;</label>
       <input id="name" alt="Name" type="text" />
+      <label for="num">Enter your number: &nbsp;</label>
+      <input id="num" alt="Name" type="number" />
       <button type="submit">Click Me!</button>
     </form>
     <section id="greeting">{{ greeting }}</section>
